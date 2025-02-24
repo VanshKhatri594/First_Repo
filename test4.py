@@ -16,12 +16,14 @@ employee_sales = {
 # Top Performer: Diana
 # Top 3 Employees: [('Diana', 9100), ('Bob', 7500), ('Ethan', 6200)]
 
-employee = {}
-for emp, sales in employee_sales.items():
-    max_sales = employee.get(emp, 0)
-    employee[emp] = max(sales, max_sales)
-print(f"Top Performer: {max(employee, key=employee.get)}")
 
-sorted_employee = sorted(employee_sales.items(), key=lambda x: x[1], reverse=True)
-print(f"Top 3 Employees: {sorted_employee[:3]}")
+def max_sales(emp, sales):
+    employee = {}
+    for emp, sales in employee_sales.items():
+        max_sales = employee.get(emp, 0)
+        employee[emp] = max(sales, max_sales)
+    return employee
 
+top_performer = max(employee_sales, key=employee_sales.get)
+print(f"Top Performer: {top_performer}")
+print(f"Top 3 Employees: {sorted(employee_sales.items(), key=lambda x: x[1], reverse=True)[:3]}")

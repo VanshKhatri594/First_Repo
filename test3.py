@@ -17,11 +17,15 @@ product_prices = {
 # Revenue per store: {'Store_A': 34500, 'Store_B': 37500, 'Store_C': 30500}
 # Most profitable store: Store_B
 
-revenue_per_store = {}
-for item, quantity in sales_data.items():
-    for product, price in quantity.items():
-        revenue_per_store[item] = revenue_per_store.get(item, 0) + price * product_prices[product]
+def calculate_revenue(sales_data, product_prices):
+    revenue_per_store = {}
+    for item, quantity in sales_data.items():
+        for product, price in quantity.items():
+            revenue_per_store[item] = revenue_per_store.get(item, 0) + price * product_prices[product]
+    return revenue_per_store
 
+revenue_per_store =  calculate_revenue(sales_data, product_prices)
 print(f"Revenue per store: {revenue_per_store}")
 print(f"Most profitable store: {max(revenue_per_store, key=revenue_per_store.get)}")
+
 
