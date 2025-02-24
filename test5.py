@@ -1,8 +1,4 @@
-# Given a dictionary where complaint types are keys and their occurrence counts are values, determine:
-#
-# The most common complaint type.
-# The percentage share of each complaint type
-
+# Example usage
 complaints = {
     "Late Delivery": 120,
     "Damaged Product": 95,
@@ -17,14 +13,19 @@ complaints = {
 # Complaint Percentage Distribution:
 # {'Late Delivery': 32%, 'Damaged Product': 25%, 'Wrong Item': 16%, 'Customer Service': 20%, 'Billing Issues': 7%}
 
-most_common_complain = max(complaints,key=complaints.get)
-print(most_common_complain)
 
-total_complaints = sum(complaints.values())
-print(total_complaints)
+def analyze_complaints(complaints):
+    most_common_complaint = max(complaints, key=complaints.get)
+    total_complaints = sum(complaints.values())
 
-percentage_distribution = {}
-for complaint, count in complaints.items():
-    percentage_distribution[complaint] = f"{(count / total_complaints) * 100}%"
+    percentage_distribution = {
+        complaint: f"{(count / total_complaints) * 100}%"
+        for complaint, count in complaints.items()
+    }
 
-print(percentage_distribution)
+    return most_common_complaint, percentage_distribution
+
+most_common, distribution = analyze_complaints(complaints)
+
+print("Most Common Complaint:", most_common)
+print("Complaint Percentage Distribution:", distribution)
