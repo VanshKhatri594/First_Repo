@@ -46,7 +46,6 @@ class LibraryInventory:
             print("No books available in the inventory.")
 
 
-# Example usage
 library = LibraryInventory()
 library.add_book("Marvel", "Vansh", 3)
 library.add_book("Python Basics", "Khatri", 5)
