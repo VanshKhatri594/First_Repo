@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 class LibraryInventory:
     def __init__(self):
         self.books = {}
-        self.borrowed_books = {}  # {user_name: {book_title: (borrow_date, due_date)}}
+        self.borrowed_books = {}
 
     def add_book(self, title, author, quantity):
         if title in self.books:
