@@ -5,6 +5,9 @@ class LibraryInventory:
     def __init__(self):
         self.books = {}
         self.borrowed_books = {}
+        self.reserved_books = {}
+        self.borrowing_history = {}
+        self.penalty_per_day = 10
 
     def add_book(self, title, author, quantity):
         if title in self.books:
@@ -61,6 +64,7 @@ class LibraryInventory:
                 borrow_date = datetime.now()
                 due_date = borrow_date + timedelta(days=14)  # 2 weeks due date
                 self.borrowed_books[user_name][title] = (borrow_date, due_date)
+                self.borrowing_history[user_name].append((title, borrow_date.date()))
                 self.books[title]['quantity'] -= 1
                 print(f'Book "{title}" borrowed successfully. Due date: {due_date.date()}')
             else:
@@ -86,6 +90,8 @@ class LibraryInventory:
                 print(f'Title: {title}, Borrowed on: {borrow_date.date()}, Due on: {due_date.date()}')
         else:
             print(f'{user_name} has not borrowed any books.')
+
+
 
 library = LibraryInventory()
 library.add_book("Marvel", "Vansh", 3)
