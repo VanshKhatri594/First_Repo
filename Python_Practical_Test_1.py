@@ -1,3 +1,6 @@
+import xlsxwriter
+
+
 sale_data = [
  {'category': 'Toys', 'item': 'Doll', 'price': 185, 'quantity': 8},
  {'category': 'Clothing', 'item': 'Jeans', 'price': 386, 'quantity': 10},
@@ -32,8 +35,6 @@ sale_data = [
 ]
 
 ''' Taken from pypi.org  '''
-
-import xlsxwriter
 
 wb = xlsxwriter.Workbook('sale_data.xlsx')
 ws = wb.add_worksheet()
